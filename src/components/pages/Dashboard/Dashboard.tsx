@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as t from "io-ts";
-import { PathReporter } from "io-ts/PathReporter";
+import {PathReporter} from "io-ts/PathReporter";
 import React from "react";
 import assertNever from "../../../utils/assertNever";
 import endpoint from "../../../utils/endpoint";
@@ -54,13 +54,13 @@ function useDashboard(params: { year: number }) {
 
         return axios
             .get<unknown>(endpoint(`reports/${params.year}`))
-            .then((response) => {
-                if (!resType.is(response)) {
-                    console.error(PathReporter.report(resType.decode(response)).join(", "));
+            .then(({data}) => {
+                if (!resType.is(data)) {
+                    console.error(PathReporter.report(resType.decode(data)).join(", "));
                     throw new Error("Error");
                 }
 
-                setState({ type: "Resolved", report: response, isRefreshing: false });
+                setState({type: "Resolved", report: data, isRefreshing: false});
             })
             .catch(() => {
                 setState({ type: "Rejected", error: "Error" });
