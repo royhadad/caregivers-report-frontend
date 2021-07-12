@@ -10,7 +10,6 @@ import {PrimaryText} from "../components/PrimaryText";
 import RefreshIndicator from "../components/RefreshIndicator";
 import TableBlocks from "../components/TableBlocks";
 import {Report} from "../Dashboard";
-import getAggregatedReport from "../../../../utils/getAggregatedReport";
 import {isLast} from "../../../../utils/arrayUtils";
 
 interface Props {
@@ -40,8 +39,7 @@ const StyledTableView = styled.div`
 const { Table, Tr, Th, Td } = TableBlocks;
 
 const TableView = (props: Props) => {
-    const aggregatedReport = getAggregatedReport(props.report);
-    const {year, caregivers} = aggregatedReport;
+    const {year, caregivers} = props.report;
 
     return (
         <StyledTableView>
