@@ -7,6 +7,7 @@ import endpoint from "../../../utils/endpoint";
 import ErrorView from "./views/ErrorView";
 import LoadingView from "./views/LoadingView";
 import TableView from "./views/TableView";
+import {getCurrentYear} from "../../../utils/dateUtils";
 
 const resType = t.type({
     year: t.number,
@@ -75,7 +76,7 @@ function useDashboard(params: { year: number }) {
 }
 
 const Dashboard = () => {
-    const { state, actions } = useDashboard({ year: 2021 });
+    const {state, actions} = useDashboard({year: getCurrentYear()});
 
     switch (state.type) {
         case "Initial":
