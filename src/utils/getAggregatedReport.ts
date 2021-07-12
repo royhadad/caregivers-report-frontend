@@ -1,6 +1,6 @@
 import {Report} from "../components/pages/Dashboard/Dashboard";
 
-// O(1) time complexity
+// O(n) time complexity
 // returns a report where every caregiver has one entry with all of it's patients
 function getAggregatedReport(report: Report): Report {
     const caregiversMap = report.caregivers.reduce((caregiversMap, caregiver) => {
