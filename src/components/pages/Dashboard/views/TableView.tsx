@@ -16,6 +16,7 @@ import {isLast} from "../../../../utils/arrayUtils";
 interface Props {
     report: Report;
     isRefreshing: boolean;
+    onClickRefresh: () => Promise<void>;
 }
 
 const Header = styled(Center)`
@@ -50,7 +51,7 @@ const TableView = (props: Props) => {
                 <PrimaryText>Year {year} - caregivers report</PrimaryText>
             </Header>
             <Row justifyContent="flex-end">
-                <Button>
+                <Button onClick={props.onClickRefresh}>
                     <RefreshIcon/>
                     <span>Refresh</span>
                 </Button>

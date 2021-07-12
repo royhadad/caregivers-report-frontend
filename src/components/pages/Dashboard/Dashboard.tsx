@@ -84,7 +84,7 @@ const Dashboard = () => {
         case "Rejected":
             return <ErrorView message={state.error} onClickRetry={actions.fetchReport} />;
         case "Resolved":
-            return <TableView {...state} />;
+            return <TableView {...state} onClickRefresh={actions.fetchReport} />;
         default:
             assertNever(state);
             return <></>;
