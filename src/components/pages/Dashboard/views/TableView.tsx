@@ -11,6 +11,7 @@ import RefreshIndicator from "../components/RefreshIndicator";
 import TableBlocks from "../components/TableBlocks";
 import {Report} from "../Dashboard";
 import getAggregatedReport from "../../../../utils/getAggregatedReport";
+import {isLast} from "../../../../utils/arrayUtils";
 
 interface Props {
     report: Report;
@@ -67,7 +68,9 @@ const TableView = (props: Props) => {
                         <Td>{caregiver.name}</Td>
                         <Td>
                             {caregiver.patients.length > 0 ? (
-                                caregiver.patients
+                                caregiver.patients.map((patient, patientIndex, patients) => (
+                                    <>{patient}{(isLast(patients, patientIndex) ? '' : ', ')}</>
+                                ))
                             ) : (
                                 <None/>
                             )}
